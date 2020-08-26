@@ -1,0 +1,12 @@
+- name : "Configuring web server in ec2 instances"
+  hosts : tag_name_web
+  roles :
+        - webserver 
+  tags : webserver
+
+
+- name : "Configuring loadbalancer server in ec2 instances"
+  hosts : tag_name_lb
+  roles :
+        - lbserver
+  tags : lbserver

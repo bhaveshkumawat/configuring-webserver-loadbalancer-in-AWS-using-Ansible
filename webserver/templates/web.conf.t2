@@ -1,0 +1,6 @@
+Listen {{pno}}
+
+<VirtualHost  {{ansible_default_ipv4.address}}:{{pno}}>
+DocumentRoot {{dr}}
+</VirtualHost>
+

@@ -1,0 +1,6 @@
+---
+# vars file for webserver
+
+dr : /var/www/speedy
+pno : 8080
+

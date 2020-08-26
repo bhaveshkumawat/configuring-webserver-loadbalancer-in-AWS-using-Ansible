@@ -1,0 +1,29 @@
+---
+# tasks file for webserver
+
+- name : "Installing  httpd Server"
+  package :
+    name : httpd
+    state : present
+
+- name : "Creating Desired Document Root in Target..."
+  file : 
+    state : directory
+    dest : "{{dr}}"
+
+
+- name : "Copying Configuration File to the host"
+  template :
+    dest : /etc/httpd/conf.d/web.conf
+    src : web.conf.t2 
+  notify : "restart"
+
+- name : "Copying my website"
+  template : 
+    dest : "{{dr}}"
+    src : index.html
+
+- name : "Starting Services of httpd"
+  service :
+    name : httpd
+    state : started

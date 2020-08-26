@@ -1,0 +1,72 @@
+- hosts: localhost
+  vars_files:
+         - /root/aws/secure.yml
+  tasks:
+  - name: provisioning webserver 1 in AWS
+    ec2: 
+     key_name: "mykey"
+     instance_type: "t2.micro"
+     image: "ami-052c08d70def0ac62"
+     wait: yes
+     count: 1
+     vpc_subnet_id: "subnet-b7111ddf"
+     assign_public_ip: yes
+     region: "ap-south-1"
+     state: present
+     group_id: "sg-00e98264"
+     aws_access_key: "{{ myuser }}"
+     aws_secret_key: "{{ mypass }}"
+     instance_tags :
+          name : web
+
+  - name: provisioning webserver 2 in AWS
+    ec2: 
+     key_name: "mykey"
+     instance_type: "t2.micro"
+     image: "ami-052c08d70def0ac62"
+     wait: yes
+     count: 1
+     vpc_subnet_id: "subnet-b7111ddf"
+     assign_public_ip: yes
+     region: "ap-south-1"
+     state: present
+     group_id: "sg-00e98264"
+     aws_access_key: "{{ myuser }}"
+     aws_secret_key: "{{ mypass }}"
+     instance_tags :
+          name : web
+  - name: provisioning webserver 3 in AWS
+    ec2: 
+     key_name: "mykey"
+     instance_type: "t2.micro"
+     image: "ami-052c08d70def0ac62"
+     wait: yes
+     count: 1
+     vpc_subnet_id: "subnet-b7111ddf"
+     assign_public_ip: yes
+     region: "ap-south-1"
+     state: present
+     group_id: "sg-00e98264"
+     aws_access_key: "{{ myuser }}"
+     aws_secret_key: "{{ mypass }}"
+     instance_tags :
+          name : web
+  
+  - name: provisioning loadbalancer server in AWS
+    ec2: 
+     key_name: "mykey"
+     instance_type: "t2.micro"
+     image: "ami-052c08d70def0ac62"
+     wait: yes
+     count: 1
+     vpc_subnet_id: "subnet-b7111ddf"
+     assign_public_ip: yes
+     region: "ap-south-1"
+     state: present
+     group_id: "sg-00e98264"
+     aws_access_key: "{{ myuser }}"
+     aws_secret_key: "{{ mypass }}"
+     instance_tags :
+          name : lb
+
+
